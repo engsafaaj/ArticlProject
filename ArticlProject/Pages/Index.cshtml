@@ -1,0 +1,151 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<header class="text-center text-white bg-primary masthead">
+    <div class="container">
+        <img class="img-fluid d-block mx-auto mb-5" src="~/img/profile.png">
+        <h1 style="font-family: Cairo, sans-serif;">مقالاتي</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0" style="font-family: Cairo, sans-serif;">مرحبا بك في موقع مقالاتي</h2>
+        <h2 class="font-weight-light mb-0" style="font-family: Cairo, sans-serif;margin: 11px;font-size: 21px;">&nbsp; :) يسعدنا انضمامك معنا&nbsp;</h2>
+    </div><button class="btn btn-primary" type="button" style="width: 254.5625px;background: var(--bs-blue);font-family: Cairo, sans-serif;height: 50px;margin: 5px;"><i class="fa fa-sign-in"></i><span style="margin: 15px;">انضم الان&nbsp;</span></button>
+</header>
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary bounce animated" style="font-family: Cairo, sans-serif;">اخر المقالات</h2>
+        <div>
+            <nav class="navbar navbar-dark navbar-expand-lg bg-secondary navigation-clean-search" style="margin: 20px;">
+                <div class="container">
+                    <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"></li>
+                            <li class="nav-item"></li>
+                            <li class="nav-item"></li>
+                        </ul>
+                        <form class="me-auto search-form" target="_self">
+                            <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" placeholder="ابحث عن مقالة" style="font-family: Cairo, sans-serif;"></div>
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">JAVA</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">PHP</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">تصميم صفحات&nbsp;</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">اندرويد</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">هواتف</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">REVIT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">HTML</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">C++</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">C#</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">تصميم</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">تقنية</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#" style="font-family: Cairo, sans-serif;">جميع الاصناف</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <hr class="star-dark mb-5">
+        <div class="row row-cols-3">
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><a class="btn btn-primary float-end" role="button" style="font-family: Cairo, sans-serif;width: 149.875px;" href="Article.html">قراءة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><button class="btn btn-primary float-end" type="button" style="font-family: Cairo, sans-serif;width: 149.875px;">قراءة</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><button class="btn btn-primary float-end" type="button" style="font-family: Cairo, sans-serif;width: 149.875px;">قراءة</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><button class="btn btn-primary float-end" type="button" style="font-family: Cairo, sans-serif;width: 149.875px;">قراءة</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><button class="btn btn-primary float-end" type="button" style="font-family: Cairo, sans-serif;width: 149.875px;">قراءة</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-bss-hover-animate="pulse" style="margin: 0;margin-top: 10px;">
+                <div class="card" style="margin: 10;">
+                    <img class="card-img-top w-100 d-block" src="~/img/portfolio/cabin.png">
+                    <div class="card-body">
+                        <h4 class="text-center card-title" style="font-family: Cairo, sans-serif;">عنوان المقالة</h4><button class="btn btn-primary float-end" type="button" style="font-family: Cairo, sans-serif;width: 149.875px;">قراءة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="text-center float-end" style="font-family: Lato, sans-serif;border-color: var(--bs-red);margin: 10px;">
+        <ul class="pagination">
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#">1</a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#">2</a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#">3</a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#">4</a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#">5</a></li>
+            <li class="page-item text-center" style="text-align: center;"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+        </ul>
+    </nav>
+</section>
+<section class="text-white bg-primary mb-0" id="about">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-white" style="font-family: Cairo, sans-serif;">حول الموقع</h2>
+        <hr class="star-light mb-5">
+        <div class="row align-items-center">
+            <div class="col">
+                <p class="lead text-center" style="font-family: Cairo, sans-serif;">نحن نوفر لك الدعم الكامل لنشر مقالاتك ومشاركتها مع الاخرين . حيث ان موقع مقالتي يضمن لك كافة الحقوق للمقالات التي تنشرها&nbsp; على الموقع&nbsp;</p>
+            </div>
+        </div>
+        <div class="text-center mt-4"><a class="btn btn-outline-light btn-xl" role="button" href="#"><i class="fa fa-american-sign-language-interpreting me-2"></i><span style="font-family: Cairo, sans-serif;">اشترك الان وانضم معنا&nbsp;</span></a></div>
+    </div>
+</section>
+<section id="contact">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary mb-0" style="font-family: Cairo, sans-serif;">تواصل معنا&nbsp;</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name" required="" placeholder="الاسم" style="font-family: Cairo, sans-serif;"><label class="form-label">Name</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="email" id="email" required="" placeholder="Email Address" style="font-family: Cairo, sans-serif;"><label class="form-label">Email Address</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="tel" id="phone" required="" placeholder="Phone Number" style="font-family: Cairo, sans-serif;"><label class="form-label">Phone Number</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-5 form-floating controls pb-2"><textarea class="form-control" id="message" required="" placeholder="Message" style="height: 150px;font-family: Cairo, sans-serif;"></textarea><label class="form-label">Message</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div id="success"></div>
+                    <div><button class="btn btn-primary float-end btn-xl" id="sendMessageButton" type="submit" style="font-family: Cairo, sans-serif;">ارسل</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

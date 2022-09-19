@@ -1,0 +1,61 @@
+﻿@page
+@model ArticlProject.Pages.AdminIndexModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div id="Cont">
+    <section>
+        <div class="container">
+            <div class="photo-card">
+                <div class="photo-background" style="background-image:url(&quot;~/img/product-aeon-feature.jpg&quot;);"></div>
+                <div class="photo-details">
+                    <h1 style="font-family: Cairo, sans-serif;">مرحبا بك صفاء&nbsp;</h1>
+                    <p style="text-align: center;">يسعدنا&nbsp; انضمامك الينا , يمكنك من خلال لوحة التحكم ادارة المحتوى الخاص بك على الموقع&nbsp;</p>
+                    <div class="photo-tags"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row space-rows">
+        <div class="col">
+            <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
+                <div class="card-header">
+                    <span class="space"><a href="#"><i class="fa fa-cloud-download" id="download-icon-1"></i></a></span>
+                    <div class="cardheader-text">
+                        <h4 id="heading-card-1" style="text-align: center;font-size: 81px;">0</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text cardbody-sub-text" style="text-align: center;">مشاركاتك الكلية</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card cards-shadown cards-hover" data-aos="slide-right" data-aos-duration="950">
+                <div class="card-header">
+                    <span class="space"><a href="#"><i class="fa fa-cloud-download" id="download-icon-2"></i></a></span>
+                    <div class="cardheader-text">
+                        <h4 id="heading-card-2" style="text-align: center;font-size: 81px;">0</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text cardbody-sub-text" style="text-align: center;">مشاركاتك لهذه السنة</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card cards-shadown cards-hover" data-aos="flip-up" data-aos-duration="950">
+                <div class="card-header cards-header-hover">
+                    <span class="space"><a href="#"><i class="fa fa-cloud-download" id="download-icon-3"></i></a></span>
+                    <div class="cardheader-text">
+                        <h4 id="heading-card-3" style="text-align: center;font-size: 81px;">0</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text sub-text-color"></p>
+                    <p class="card-text cardbody-sub-text" style="text-align: center;">مشاركاتك لهذه الشهر</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+#right-sidebar {
+  background-color: pink;
+  position: absolute;
+  height: 100%;
+  overflow-y: auto;
+  transition: width 1s, left 1s;
+}
+
+#content {
+  transition: width 1s, left 1s;
+}
+
+.right-sidebar-collapse {
+  width: 5%;
+  left: 95%;
+}
+
+.content-expand {
+  width: 95%;
+}
+
+.right-sidebar-normal {
+  width: 20%;
+  left: 80%;
+}
+
+.content-normal {
+  width: 80%;
+}
+
