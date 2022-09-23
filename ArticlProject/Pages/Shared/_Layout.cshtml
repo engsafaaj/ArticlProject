@@ -45,22 +45,17 @@
     <link rel="stylesheet" href="~/css/Studious-sidebar.css">
     <link rel="stylesheet" href="~/css/Team-Boxed.css">
     <link rel="stylesheet" href="~/css/Vertical-Left-SideBar-by-Jigar-Mistry.css">
-@*
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />*@
+    @*
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav" style="font-family: Cairo, sans-serif;">
         <div class="container">
             <a class="navbar-brand" href="index.html" style="font-family: Cairo, sans-serif;">مقالاتي</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse text-center" id="navbarResponsive">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">اشتراك</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Cairo, sans-serif;">تسجيل الدخول</a></li>
-                </ul>
+                <partial name="_LoginPartial" />
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about" style="font-family: Cairo, sans-serif;">من نحن؟</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact" style="font-family: Cairo, sans-serif;">تواصل معنا</a></li>
@@ -72,15 +67,25 @@
             </div>
         </div>
     </nav>
+  
+    <header class="text-center text-white bg-primary masthead">
+        <div class="container">
+            <img class="img-fluid d-block mx-auto mb-5" src="~/img/profile.png">
+            <h1 style="font-family: Cairo, sans-serif;">مقالاتي</h1>
+            <hr class="star-light">
+            <h2 class="font-weight-light mb-0" style="font-family: Cairo, sans-serif;">مرحبا بك في موقع مقالاتي</h2>
+            <h2 class="font-weight-light mb-0" style="font-family: Cairo, sans-serif;margin: 11px;font-size: 21px;">&nbsp; :) يسعدنا انضمامك معنا&nbsp;</h2>
+        </div><button class="btn btn-primary" type="button" style="width: 254.5625px;background: var(--bs-blue);font-family: Cairo, sans-serif;height: 50px;margin: 5px;"><i class="fa fa-sign-in"></i><span style="margin: 15px;">انضم الان&nbsp;</span></button>
+    </header>
 
 
-    <div>
 
+    <div class="container" style=" font-family:Cairo;direction:rtl">
         @RenderBody()
     </div>
 
 
-    <footer class="text-center footer"  >
+    <footer class="text-center footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-5 mb-lg-0">
@@ -123,8 +128,8 @@
     <script src="~/js/theme.js"></script>
 
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>*@
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
 
     @RenderSection("Scripts", required: false)
 
