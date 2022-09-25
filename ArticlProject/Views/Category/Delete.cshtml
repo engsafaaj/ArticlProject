@@ -1,0 +1,28 @@
+﻿@model ArticlProject.Core.Category
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="font-family:Cairo">حذف الصنف الحالي</h1>
+
+<h3 style="font-family:Cairo">هل انت متأكد من هذا الاجراء ؟ تذكر لايمكن استعادة البيانات</h3>
+<div>
+    <h4 style="font-family:Cairo">معلومات الصنف</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="Index">الرجوع الى الاصناف</a>
+    </form>
+</div>

@@ -50,14 +50,14 @@
 <body style="font-family: Cairo;">
     <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button">
         <div class="container">
-            <a class="navbar-brand" href="index.html">الرجوع الى الصفحة</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="/Index">الرجوع الى الصفحة</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto"></ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">حسابي</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المستخدمين</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المقالات</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">الاصناف</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;background: var(--bs-red);">الرئيسة</a></span>
             </div>
         </div>
     </nav>
-   
-    <div>
+
+    <div class="container" style="font-family:Cairo;direction:rtl">
         @RenderBody()
     </div>
     <script src="~/bootstrap/js/bootstrap.min.js"></script>
@@ -74,6 +74,9 @@
     <script src="~/js/Sidebar-Menu.js"></script>
     <script src="~/js/Sidebar-right-opening.js"></script>
     <script src="~/js/theme.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
 </body>
 
 </html>

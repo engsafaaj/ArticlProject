@@ -1,5 +1,7 @@
 using ArticlProject.Code;
+using ArticlProject.Core;
 using ArticlProject.Data;
+using ArticlProject.Data.SqlServerEF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace ArticlProject
 {
     public class Startup
@@ -34,7 +35,15 @@ namespace ArticlProject
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
+            services.AddAuthorization(op =>
+            {
+                op.AddPolicy("User", p => p.RequireClaim("User", "User"));
+                op.AddPolicy("Admin", p => p.RequireClaim("Admin", "Admin"));
+            }
+            );
+            //services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddMvc(op => op.EnableEndpointRouting = false);
             services.AddRazorPages();
         }
 
@@ -55,7 +64,7 @@ namespace ArticlProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseMvcWithDefaultRoute();
             app.UseRouting();
 
             app.UseAuthentication();
