@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using ArticlProject.Core;
+using ArticlProject.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -23,17 +25,20 @@ namespace ArticlProject.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IDataHelper<Author> dataHelper;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IDataHelper<Author> dataHelper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.dataHelper = dataHelper;
         }
 
         [BindProperty]
@@ -45,6 +50,10 @@ namespace ArticlProject.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "اسمك الكامل")]
+            public string FullName { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "الايميل")]
@@ -74,16 +83,23 @@ namespace ArticlProject.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-
+                    var userid = await _userManager.GetUserIdAsync(user);
+                    // Add Athor
+                    var author = new Author
+                    {
+                        UserId= userid,
+                        FullName=Input.FullName,
+                        UserName=Input.Email,
+                    };
+                    dataHelper.Add(author);
                     // Add Claims
                     System.Security.Claims.Claim claim = new System.Security.Claims.Claim("User", "User");
                     await _userManager.AddClaimAsync(user, claim);
-
 
                     // Email Sender
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

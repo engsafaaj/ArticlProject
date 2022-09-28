@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ArticlProject.Data\ArticlProject.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
 </Project>

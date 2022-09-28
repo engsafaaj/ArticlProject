@@ -36,6 +36,7 @@ namespace ArticlProject
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
+            services.AddSingleton<IDataHelper<Author>, AuthorEntity>();
             services.AddAuthorization(op =>
             {
                 op.AddPolicy("User", p => p.RequireClaim("User", "User"));

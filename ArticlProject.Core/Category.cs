@@ -12,7 +12,7 @@ namespace ArticlProject.Core
         [Required(ErrorMessage ="هذا الحقل مطلوب")]
         [Display(Name="اسم الصنف")]
         [MaxLength(50,ErrorMessage ="اعلى قمية للادخال هي 50 حرف")]
-        [MinLength(2,ErrorMessage ="ادنى قمية للادخال هي حرفان")]
+        [MinLength(2,ErrorMessage ="ادنى قيمة للادخال هي حرفان")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
     }
