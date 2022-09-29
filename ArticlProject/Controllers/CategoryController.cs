@@ -23,6 +23,9 @@ namespace ArticlProject.Controllers
             return View(dataHelper.GetAllData());
         }
 
+       
+
+        
         // GET: CategoryController/Create
         public ActionResult Create()
         {
@@ -36,7 +39,7 @@ namespace ArticlProject.Controllers
         {
             try
             {
-               var result= dataHelper.Add(collection);
+                var result = dataHelper.Add(collection);
                 if (result == 1)
                 {
                     return RedirectToAction(nameof(Index));
@@ -66,7 +69,7 @@ namespace ArticlProject.Controllers
         {
             try
             {
-                var result = dataHelper.Edit(id,collection);
+                var result = dataHelper.Edit(id, collection);
                 if (result == 1)
                 {
                     return RedirectToAction(nameof(Index));

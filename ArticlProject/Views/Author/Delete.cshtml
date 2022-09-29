@@ -1,0 +1,70 @@
+﻿@model ArticlProject.Core.Author
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="font-family:Cairo">حذف</h1>
+
+<h3 style="font-family:Cairo">هل انت متأكد من هذا الاجراء , لايمكن استعادة البيانات وسيتم حذف كافة البيانات المرتبطة</h3>
+<div>
+    <h4 style="font-family:Cairo">معلومات المستخدم</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfileImageUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProfileImageUrl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Facbook)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Facbook)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Instagram)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Instagram)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Twitter)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Twitter)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
