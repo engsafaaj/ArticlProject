@@ -2,6 +2,7 @@ using ArticlProject.Code;
 using ArticlProject.Core;
 using ArticlProject.Data;
 using ArticlProject.Data.SqlServerEF;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,26 +32,30 @@ namespace ArticlProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
-            services.AddSingleton<IDataHelper<Author>, AuthorEntity>();
             services.AddAuthorization(op =>
             {
                 op.AddPolicy("User", p => p.RequireClaim("User", "User"));
                 op.AddPolicy("Admin", p => p.RequireClaim("Admin", "Admin"));
             }
             );
-            //services.AddSingleton<IEmailSender, EmailSender>();
-            services.AddMvc(op => op.EnableEndpointRouting = false);
+            // Inject Table
+            services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
+            services.AddSingleton<IDataHelper<Author>, AuthorEntity>();
+            services.AddSingleton<IDataHelper<AuthorPost>, AuthorPostEntity>();
+
+            services.AddControllersWithViews();
             services.AddRazorPages();
+            //services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,14 +70,17 @@ namespace ArticlProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
             app.UseRouting();
+
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default", 
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

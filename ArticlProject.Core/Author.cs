@@ -29,5 +29,9 @@ namespace ArticlProject.Core
         public string Instagram { get; set; }
         [Display(Name = "تويتر")]
         public string Twitter { get; set; }
+
+        // Navigation
+        public virtual List<AuthorPost> AuthorPosts { get; set; }
+
     }
 }

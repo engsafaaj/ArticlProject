@@ -82,7 +82,7 @@ namespace ArticlProject.Data.SqlServerEF
             }
         }
 
-        public List<Category> GetDataByUser(int UserId)
+        public List<Category> GetDataByUser(string UserId)
         {
             throw new NotImplementedException();
         }

@@ -7,28 +7,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArticlProject.Controllers
 {
     public class AuthorController : Controller
     {
         private readonly IDataHelper<Author> dataHelper;
+        private readonly IAuthorizationService authorizationService;
         private readonly IWebHostEnvironment webHost;
         private readonly Code.FilesHelper filesHelper;
-        public AuthorController(IDataHelper<Author> dataHelper, IWebHostEnvironment webHost)
+        private int pageItem;
+        public AuthorController(
+            IDataHelper<Author> dataHelper,
+            IAuthorizationService authorizationService
+            , IWebHostEnvironment webHost)
         {
             this.dataHelper = dataHelper;
+            this.authorizationService = authorizationService;
             this.webHost = webHost;
             filesHelper = new Code.FilesHelper(this.webHost);
+            pageItem = 10;
         }
 
         // GET: AuthorController
-        public ActionResult Index()
+        [Authorize("Admin")]
+        public ActionResult Index(int? id)
         {
-            return View(dataHelper.GetAllData());
+            if (id == 0 || id == null)
+            {
+                return View(dataHelper.GetAllData().Take(pageItem));
+            }
+            else
+            {
+                var data = dataHelper.GetAllData().Where(x => x.Id > id).Take(pageItem);
+                return View(data);
+            }
         }
+        [Authorize("Admin")]
+        public ActionResult Search(string SearchItem)
+        {
+            if (SearchItem == null)
+            {
+                return View("Index", dataHelper.GetAllData());
+            }
+            else
+            {
+                return View("Index", dataHelper.Search(SearchItem));
 
+            }
+        }
         // GET: AuthorController/Edit/5
+        [Authorize]
+
         public ActionResult Edit(int id)
         {
             var author = dataHelper.Find(id);
@@ -49,6 +80,7 @@ namespace ArticlProject.Controllers
         // POST: AuthorController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(int id, CoreView.AuthorView collection)
         {
             try
@@ -68,7 +100,16 @@ namespace ArticlProject.Controllers
                 };
                 dataHelper.Edit(id, author);
 
-                return RedirectToAction(nameof(Index));
+                var result = authorizationService.AuthorizeAsync(User, "Admin");
+                if (result.Result.Succeeded)
+                {
+                    return RedirectToAction(nameof(Index));
+
+                }
+                else
+                {
+                    return Redirect("/AdminIndex");
+                }
             }
             catch 
             {
@@ -77,6 +118,7 @@ namespace ArticlProject.Controllers
         }
 
         // GET: AuthorController/Delete/5
+        [Authorize("Admin")]
         public ActionResult Delete(int id)
         {
             var author = dataHelper.Find(id);
@@ -97,6 +139,7 @@ namespace ArticlProject.Controllers
         // POST: AuthorController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("Admin")]
         public ActionResult Delete(int id, Author collection)
         {
             try

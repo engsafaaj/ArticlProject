@@ -1,5 +1,6 @@
 ﻿using ArticlProject.Core;
 using ArticlProject.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,23 +10,45 @@ using System.Threading.Tasks;
 
 namespace ArticlProject.Controllers
 {
+    [Authorize("Admin")]
+
     public class CategoryController : Controller
     {
         private readonly IDataHelper<Category> dataHelper;
-
+        private int pageItem;
         public CategoryController(IDataHelper<Category> dataHelper)
         {
             this.dataHelper = dataHelper;
+            pageItem = 10;
         }
         // GET: CategoryController
-        public ActionResult Index()
+        public ActionResult Index(int?id)
         {
-            return View(dataHelper.GetAllData());
+            if (id == 0 || id==null)
+            {
+                return View(dataHelper.GetAllData().Take(pageItem));
+            }
+            else
+            {
+                var data = dataHelper.GetAllData().Where(x => x.Id > id).Take(pageItem);
+                return View(data);
+            }
         }
 
-       
+        // GET: CategoryController
+        public ActionResult Search(string SearchItem)
+        {
+            if (SearchItem == null)
+            {
+                return View("Index", dataHelper.GetAllData());
+            }
+            else
+            {
+                return View("Index", dataHelper.Search(SearchItem));
+            }
+        }
 
-        
+
         // GET: CategoryController/Create
         public ActionResult Create()
         {

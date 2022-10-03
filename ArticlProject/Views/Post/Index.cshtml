@@ -1,22 +1,25 @@
-﻿@model IEnumerable<ArticlProject.Core.Author>
+﻿@model IEnumerable<ArticlProject.Core.AuthorPost>
 
 @{
-    ViewData["Title"] = "البيانات";
+    ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1 style="font-family:Cairo">بيانات الناشرون</h1>
+<h1 style="font-family:Cairo">بيانات المشاركات</h1>
 
+<p style="font-family:Cairo">
+    <a asp-action="Create">مشاركة جديدة</a>
+</p>
+<br />
 <form method="get" asp-action="Search">
     <input type="search" name="SearchItem" class="search-field" />
     <input type="submit" value="بحث" class="btn-primary" />
 </form>
+<br />
 <table class="table table-striped hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -24,30 +27,28 @@
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProfileImageUrl)
+                @Html.DisplayNameFor(model => model.PostCategory)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Bio)
+                @Html.DisplayNameFor(model => model.PostTitle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Facbook)
+                @Html.DisplayNameFor(model => model.PostDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Instagram)
+                @Html.DisplayNameFor(model => model.PostImageUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Twitter)
+                @Html.DisplayNameFor(model => model.AddedDate)
             </th>
-            <th></th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
@@ -55,23 +56,24 @@
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
-                    <img src="~/Images/@item.ProfileImageUrl" class="rounded-circle" width="50" height="50" />
+                    @Html.DisplayFor(modelItem => item.PostCategory)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Bio)
+                    @Html.DisplayFor(modelItem => item.PostTitle)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Facbook)
+                    @Html.DisplayFor(modelItem => item.PostDescription)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Instagram)
+                    <img src="~/Images/@item.PostImageUrl" class="rounded-circle" width="50" height="50" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Twitter)
+                    @Html.DisplayFor(modelItem => item.AddedDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">تعديل</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">تفاصيل</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
                 </td>
             </tr>
         }

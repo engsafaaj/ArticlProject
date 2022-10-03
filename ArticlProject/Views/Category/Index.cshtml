@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ArticlProject.Core.Category>
-
 @{
     ViewData["Title"] = "قائمة الاصناف";
     Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
-    string SearhItem="";
 }
 
 <h1 style="font-family:Cairo">الاصناف</h1>
@@ -11,7 +9,11 @@
 <p>
     <a class="btn-primary" asp-action="Create">اضافة صنف جديد</a>
 </p>
-
+<br />
+<form method="get" asp-action="Search">
+    <input type="search" name="SearchItem" class="search-field" />
+    <input type="submit" value="بحث" class="btn-primary" />
+</form>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -42,3 +44,14 @@
         }
     </tbody>
 </table>
+
+@{ if (Model.ToList().Count < 10)
+    {
+        int id = 0;
+        <a asp-action="Index" asp-route-id="@id">الصفحة الاولى</a> ;
+    }
+    else
+    {
+        <a asp-action="Index" asp-route-id="@Model.ToList().Last().Id">التالي</a> ;
+    }
+}

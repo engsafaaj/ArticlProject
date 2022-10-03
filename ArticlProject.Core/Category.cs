@@ -15,5 +15,8 @@ namespace ArticlProject.Core
         [MinLength(2,ErrorMessage ="ادنى قيمة للادخال هي حرفان")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
+
+        // Navigtion
+        public virtual List<AuthorPost> AuthorPosts { get; set; }
     }
 }

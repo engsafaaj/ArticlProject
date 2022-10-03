@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@inject ArticlProject.Data.IDataHelper<ArticlProject.Core.Author> datahelper
+@{
+    var userid = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    int id = datahelper.GetAllData().Where(x => x.UserId == userid).Select(x => x.Id).First();
+    var result = AuthorizationService.AuthorizeAsync(User, "Admin");
+
+}
+<!DOCTYPE html>
 <html style="font-family: Cairo, sans-serif;">
 
 <head>
@@ -52,7 +62,26 @@
         <div class="container">
             <a class="navbar-brand" href="/Index">الرجوع الى الصفحة</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav me-auto"></ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">حسابي</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المستخدمين</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المقالات</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">الاصناف</a><a class="btn btn-light action-button" role="button" href="#" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;background: var(--bs-red);">الرئيسة</a></span>
+                <ul class="navbar-nav me-auto">
+                </ul><span class="navbar-text actions">
+                    <a asp-controller="Author" asp-action="Edit" asp-route-id="@id" class="btn btn-light action-button" role="button" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">حسابي</a>
+                    @{
+                        if (result.Result.Succeeded)
+                        {
+                            <a class="btn btn-light action-button" role="button" href="/Author/Index" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المستخدمين</a>
+
+                        }
+                    }
+                    <a class="btn btn-light action-button" role="button" href="/Post/Index" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">المقالات</a>
+                    @{
+                        if (result.Result.Succeeded)
+                        {
+                            <a class="btn btn-light action-button" role="button" href="/Category/Index" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;">الاصناف</a>
+
+                        }
+                    }
+                    <a class="btn btn-light action-button" role="button" href="/AdminIndex" style="margin: 5px;width: 116.7px;margin-right: 0px;font-family: Cairo, sans-serif;background: var(--bs-red);">الرئيسة</a>
+                </span>
             </div>
         </div>
     </nav>

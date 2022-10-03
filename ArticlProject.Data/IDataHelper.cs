@@ -8,7 +8,7 @@ namespace ArticlProject.Data
     {
         // Read
         List<Table> GetAllData();
-        List<Table> GetDataByUser(int UserId);
+        List<Table> GetDataByUser(string UserId);
         List<Table> Search(string SerachItem);
         Table Find(int Id);
 
