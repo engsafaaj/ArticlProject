@@ -93,7 +93,7 @@ namespace ArticlProject.Data.SqlServerEF
             {
                 return db.Author.Where(
                    x => x.FullName.Contains(SerachItem)
-                   || x.UserId.ToString().Contains(SerachItem)
+                   || x.UserId.Contains(SerachItem)
                    || x.Bio.Contains(SerachItem)
                    || x.UserName.Contains(SerachItem)
                    || x.Facbook.Contains(SerachItem)
