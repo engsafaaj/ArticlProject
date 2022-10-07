@@ -10,7 +10,7 @@ namespace ArticlProject.Data.SqlServerEF
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=SQL8001.site4now.net;Database=db_a8d0a9_articlprojectdb;User Id=db_a8d0a9_articlprojectdb_admin;Password=FeN@LuQZNQ9Mtju;timeout=120");
+            optionsBuilder.UseSqlServer(@"Server=.//SQLServer;Database=DBArtical;Trusted_Connection=true");
         }
         public DbSet<Category> Category { get; set; }
         public DbSet<Author> Author { get; set; }
